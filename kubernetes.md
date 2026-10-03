@@ -134,6 +134,8 @@ Container Orchestration is the automation of the work required to run and manage
 ## 1. Container Runtime
 The **Container Runtime** is a piece of software responsible for running containers. It is **not** part of core Kubernetes and must be installed separately. 
 
+![Alt text](container_runtime.png)
+
 * **Communication Mechanism:** The `kubelet` communicates directly with the container runtime.
 * **The CRI Standard:** To support multiple runtimes, Kubernetes uses the **Container Runtime Interface (CRI)**, a standard protocol that allows different runtime engines to plug into the cluster seamlessly.
 
