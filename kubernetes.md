@@ -454,4 +454,31 @@ Application delivery, also commonly known as **deployment**, is the process or t
 ![Alt text](cloudnative.png)
 
 
+# GitOps
 
+**GitOps** is basically making use of GIT to manage your application infra. Git is a popular source control tool used by developers.  
+
+We have files in Git to tell what our application and/or infra should look like and we are using those files to actually implement our infrastructure in our actual environment. In other words, **GIT is the source of truth for declarative infra/applications**. 
+
+Automation further helps to implement what is in GIT. 
+
+## GitOps in the Context of Kubernetes
+* The Git repo consists of files describing the cluster’s desired state. 
+* There is a tool that watches these repos (that tool is a GitOps tool and there are multiple tools that carry this gitops function out). 
+* This tool automatically makes changes to our cluster by reading what changes have been made in the Git repo.
+
+![Alt text](gitops.png)
+
+# CI/CD Fundamentals
+
+## Continuous Integration (CI)
+Continuous integration is the process of integrating code from multiple developers. 
+
+* **Automation Focus:** CI utilizes automation extensively. 
+* **Automated Pipeline Stages:** Compiling, integration, and automated tests occur automatically when a developer pushes code changes to a repository like Git.
+
+## Continuous Delivery (CD)
+Continuous delivery is the process of deploying code frequently without interrupting stability or availability to the user. 
+
+* **Automation Focus:** CD relies heavily on automation.
+* **Alternative Names:** It is also frequently referred to as continuous deployment.
