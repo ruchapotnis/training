@@ -211,3 +211,33 @@ A **Service** acts as a stable abstraction layer to expose applications running 
 Kubernetes provides two primary strategies for locating and connecting to services:
 1. **ClusterDNS:** Resolving services natively using their internal registered hostnames.
 2. **Environment Variables:** The `kubelet` automatically injects environment variables containing service name, IP, and port information into every container upon startup.
+
+# Kubernetes Ingress
+
+An Ingress is a Kubernetes object that manages external access to applications within the cluster. It exposes applications externally.
+
+## Key Features
+* Can offer additional functionality like **load balancing** and **SSL termination**.
+* Ingress does not replace services but works alongside them. 
+
+## How It Works
+1. Ingress will route to a service in the backend. 
+2. The client communicates with the ingress.
+3. Ingress communicates with the services.
+4. The service will eventually tap to the pod of requirement. 
+
+If a cluster is using multiple services, the request from the client should go to a particular service depending on the request. That decision depends on ingress. Ingress helps to select which service is getting taped to access the required application within a pod.# Kubernetes Ingress
+
+An Ingress is a Kubernetes object that manages external access to applications within the cluster. It exposes applications externally.
+
+## Key Features
+* Can offer additional functionality like **load balancing** and **SSL termination**.
+* Ingress does not replace services but works alongside them. 
+
+## How It Works
+1. Ingress will route to a service in the backend. 
+2. The client communicates with the ingress.
+3. Ingress communicates with the services.
+4. The service will eventually tap to the pod of requirement. 
+
+If a cluster is using multiple services, the request from the client should go to a particular service depending on the request. That decision depends on ingress. Ingress helps to select which service is getting taped to access the required application within a pod.
