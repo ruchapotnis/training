@@ -292,3 +292,5 @@ The service mesh has two main components:
 
 There are various examples of service meshes: Linkerd, Consul connect, Traefik mesh, Istio, Kuma. 
 Service mesh interface (SMI) - SMI is that standard interface in Kubernetes. Helps to configure any SMI supporting service  mesh using custom Kubernetes resources via Kubernetes API. Basically it is a standard interface for service meshes built in Kubernetes and if we have a service mesh that supports SMI then we can configure that service mesh with Kubernetes objects. 
+
+
