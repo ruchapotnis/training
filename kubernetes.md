@@ -241,3 +241,50 @@ An Ingress is a Kubernetes object that manages external access to applications w
 4. The service will eventually tap to the pod of requirement. 
 
 If a cluster is using multiple services, the request from the client should go to a particular service depending on the request. That decision depends on ingress. Ingress helps to select which service is getting taped to access the required application within a pod.
+
+![Alt text](ingress.png)
+
+# Service Meshes
+
+Service mesh manages communication between application components often adding additional functionality like encryption, logging or tracing. (Service meshes can automate the process of providing additional security, reliability and functionality around your containers.)
+
+It is different from Kubernetes services. Although it may share some commonalities between services. 
+
+Say that our application is running on multiple pods. These pods have a sidecar. With the help of these sidecars, pods can communicate with each other. These sidecars are called service meshes. Application components communicate with each other with the help of service mesh proxies also called as sidecars, deployed alongside each component.
+
+```
+[ Pod A ]                          [ Pod B ]
+┌─────────────────────────┐        ┌─────────────────────────┐
+│ ┌───────────────┐       │        │ ┌───────────────┐       │
+│ │ Main Container│       │        │ │ Main Container│       │
+│ └───────┬───────┘       │        │ └───────▲───────┘       │
+│         │               │        │         │               │
+│ ┌───────▼───────┐       │        │ ┌───────┴───────┐       │
+│ │ Proxy Sidecar │───────┼────────┼>│ Proxy Sidecar │       │
+│ │ (Purple Sq.)  │       │ Traffic│ │ (Purple Sq.)  │       │
+│ └───────────────┘       │        │ └───────────────┘       │
+└─────────────────────────┘        └─────────────────────────┘
+```
+
+Purple squares are the sidecars/proxies. Communication occurs through them. Sidecar proxies add the additional functionality provided by service mesh.  
+
+## Service Mesh Architecture
+
+The service mesh has two main components: 
+
+### 1. Service Proxy / Data Plane
+* **Service proxies**, also called sidecars, are present in each pod.
+* They are deployed specifically in those pods that contain the application containers needing to communicate with each other.
+* These represent the "purple squares" mentioned above.
+* All network communication passes directly through these sidecars.
+* Together, these proxies form the **Data Plane**.
+
+### 2. Control Plane
+* The **Control Plane** controls, configures, and coordinates the data plane proxies.
+* This control plane is entirely separate from the main Kubernetes control plane.
+* It specifically manages the service mesh itself.
+* If you want to view telemetry data present in the sidecars or push configuration changes that alter their network behavior, you interact with the control plane.
+
+> **Key Concept:** A sidecar is basically another container running along with the main container inside the same pod.
+
+![Alt text](service_mesh.png)
