@@ -324,5 +324,134 @@ Another way of Kubernetes storage is ConfigMaps and Secrets.
 * **ConfigMaps:** Store configuration data like configuration values, config files, secure credentials and pass it to the containers. 
 * **Secrets:** Used to store sensitive data like passwords or API keys. Secrets data is not encrypted by default. We need to encrypt it.
 
+# Cloud Native Architecture Fundamentals
+
+Cloud native architecture seeks to design systems that support the goal of cloud native technology. Tools and techniques and design strategies used to facilitate the application running on cloud. 
+
+Cloud native technology is important because it removes roadblocks to innovation, through:
+* **Software agility:** We can move quickly in making changes to our software.
+* **Automation:** Gives consistency in how changes are happening in our system. All changes happen in the same methodology every single time. Saves a lot of time and work. 
+* **Robust, reliable systems:** Systems available when customers need them. 
+
+---
+
+# Autoscaling
+
+Automatically assigning more or fewer compute resources to an application or system in response to real-time needs. 
+
+Autoscaling has a lot of cost advantages. Scaling too low affects reliability and performance. But scaling too high affects cost as it increases. But autoscaling helps to scale more accurately at all times, achieving reliability and performance at a lower cost. 
+
+### Two Different Types of Scaling
+* **Vertical:** Adding more compute power. It essentially means adding additional CPU or memory or cluster Nodes (basically vertical scaling means adding resources to existing apps and servers).
+* **Horizontal:** Adding more instances of an application (in case of Kubernetes, it means adding new replica pods) or adding new nodes to the cluster (basically means adding additional replicas of apps and servers).
+
+### Autoscaling Tools for Kubernetes
+* **Horizontal Pod Autoscaler (HPA):** This monitors resource usage of existing replicas and creates/destroys replicas when needed. 
+* **Cluster Autoscaler:** This adds and removes Nodes from cluster based upon real-time usage. 
+
+---
+
+# Serverless
+
+It is a technology where developers build and run applications without worrying at all about servers and server-related concerns like servers, scaling, operating systems, etc. 
+
+Developers only need to worry about creating their code, ship the code and the code just runs. They don’t need to worry about servers. This is the meaning of serverless. 
+
+* **Serverless does NOT mean no servers:** Of course there are servers present and ultimately one needs to have hardware to run the code. 
+* **Management:** Servers are managed by cloud providers. Resources are provided as per need. The only thing the developer needs to do is provide the code. 
+* **Offerings/Tools:** Provided by all the major cloud providers. For example: AWS provides Lambda, Azure has Azure functions, Google has Google Cloud Functions. 
+
+---
+
+# Organizational Personas and/or Cloud Personas
+
+Organizational personas are not necessarily singular individuals or job positions. They are roles that describe the responsibility of managing cloud-native applications.
+
+* **Developer:** Writes application code, ensures application code is working as per customer needs.
+* **Ops:** This role builds and maintains infrastructure that runs this code, also responsible for deploying new code to this infrastructure.
+* **SRE (Site Reliability Engineer):** Responsible for maintaining application reliability and performance. To maintain this they create service-level agreements (SLAs), service-level indicators (SLIs), and service-level objectives (SLOs). 
+* **Security and Compliance Engineer:** Develops and maintains security standards. They also ensure the application and infrastructure comply with technology and government standards. 
+
+---
+
+# Open Standards
+
+It is a technology specification that is open to public adoption. It is not necessarily a technology or a tool but it is a document that describes the features of a tool and anyone in the public is free to develop a tool that meets that standard. 
+
+These standards allow technologies that support the same open standard to work together more easily. If tools are developed using open standards it becomes easier as open-standards-developed tools provide a lot of flexibility to work in accordance to cloud native environments so we can accomplish what needs to be done. 
+
+### Open Container Initiative (OCI)
+One organization for creation of open standards is OCI. OCI is an organization that creates open standards for container formats and runtimes. Open standards that OCI has created are:
+* **Image-spec:** OCI open standard for container image format.
+* **Runtime-spec:** OCI open standard for container runtime. 
+
+**Examples of Open Standards:** HTML, XML, OCI runtime-spec, OCI image-spec, and SMI (Service Mesh Interface).
+
+---
+
+# Telemetry and Observability
+
+* **Telemetry:** Collecting data, such as log data and metrics about a system. 
+* **Observability:** The ability to understand and measure the state of the system based upon data generated by that system. 
+* **Relationship:** They are related because we need to collect data from telemetry for observability to work. 
+
+### Accessing Data in Kubernetes
+* **Container log:** Helps to understand what is happening inside a container. What exactly is happening for an application that is running in the Kubernetes cluster. Log data is very important for telemetry and observability. 
+* **Management:** Kubernetes maintains logs for each container. Standard output and error streams go into the container log. 
+
+### Distributed System Tracing
+Distributed system tracing tracks requests across a complex application consisting of multiple components and services. If there is a microservice application or an application that is spread out on multiple different containers, usually when a user request comes in, that request is interacting with basically multiple containers. Distributed system tracks that request as it moves through different components of the applications.
+
+* Each request is tagged with a unique identifier.
+* Helps us understand what is going on as requests make their way through the entire system.
+* **Trace:** It is data about a request as it moves across a system; a set of related events across multiple components. 
+* **Span:** A part of the trace representing the request moving through one segment of the system.
+
+# Monitoring with Prometheus and Grafana
+
+Prometheus is an open source tool for monitoring and alerting. Its primary focus is gathering metric data. It collects metric data of a system in one place, performs monitoring, and later sends out alerts. Automated alerts help us to know what is happening in the system in real time.
+
+## Types of Metrics
+Prometheus tracks data categorized into four main metric types:
+
+* **Counter:** A single number that can increase or reset its value to zero.
+* **Gauge:** A single number that can go up or down.
+* **Histogram:** Counts observations that fit into configurable buckets. Histograms track response time using buckets that consist of the number of response times and the count of how many requests were responded to within that time (in milliseconds).
+* **Summary:** Similar to a histogram but uses dynamic quantiles over a sliding window.
+
+## Visualization
+Grafana can be used to build useful visualizations of Prometheus data. Prometheus collects the data and Grafana displays the data.
+
+# Cost Management & Application Delivery Fundamentals
+
+## Cost Management
+Cost management involves taking proactive steps to use the cloud more efficiently and limit unnecessary cloud service costs. 
+
+### FinOps
+**FinOps** refers to the practice of using observability to support automation and data-driven decisions to limit cloud costs. 
+
+### Examples of Cost Management
+* **Capacity Optimization:** Collecting data in Prometheus to show that there is more than enough capacity to handle current load, and scaling down as a result.
+* **Resource Selection:** Gathering metrics about compute resource usage in order to choose more efficient cloud services for application services that are not used as much.
+* **Dynamic Scaling:** Using a cluster autoscaler to temporarily scale the cluster up in order to run a large batch processing job.
+
+---
+
+## Application Delivery Fundamentals
+Application delivery, also commonly known as **deployment**, is the process or technique used to ship new code to customers.
+
+### Key Delivery Challenges
+* **Deployment Woes:** Problems caused directly by the process of deploying the code.
+* **Bugs:** Structural or logical problems residing within the code itself.
+* **Configuration:** High complexity in managing and maintaining configuration parity across different environments.
+
+### Balancing Innovation and Reliability
+**Question:** Changes inherently bring instability. How do we innovate rapidly and maintain reliability when these challenges are in the picture?
+
+**Answer:** **Cloud-native architecture** is deliberately designed around the techniques and tools that directly address and meet the challenges of application delivery.
+
+
+![Alt text](cloudnative.png)
+
 
 
