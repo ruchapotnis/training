@@ -294,3 +294,35 @@ There are various examples of service meshes: Linkerd, Consul connect, Traefik m
 Service mesh interface (SMI) - SMI is that standard interface in Kubernetes. Helps to configure any SMI supporting service  mesh using custom Kubernetes resources via Kubernetes API. Basically it is a standard interface for service meshes built in Kubernetes and if we have a service mesh that supports SMI then we can configure that service mesh with Kubernetes objects. 
 
 
+# Kubernetes Storage
+
+Volume provides external storage to our Kubernetes containers to store application data. If an application is running on the container and if you store data on the container file system and if the application gets destroyed, the information is lost. But if we need something that is more persistent or if we need something to store the data outside the container file system, we use volumes. 
+
+### Persistent Volumes
+This is related to ‘Volumes’ but they allow us to treat storage as dynamically consumable, similar to how Kubernetes treats resources like memory and CPU. Volume by itself allows us to configure storage there itself within your pod specification but for persistent volume storage is configured outside your pod specification and then later it is consumed within your pod. 
+
+Persistent volume object in Kubernetes defines a storage resource. It is defining some place where we can store data. It can be a disk, a server etc. Persistent volume represents the actual resource itself.
+
+### Persistent Volume Claim (PVC)
+It binds dynamically to Persistent volume and allows you to mount the storage resource inside a pod. Persistent volume claim defines what kind of storage I need and then mount that inside the pod and inside the container. 
+
+> **Summary:** Persistent volume in short defines the storage resource that is available and persistent volume claim defines what kind of storage resource do I need and ties that into a pod.
+
+![Alt text](persistent_volume.png)
+
+### Reclaim Policies
+Persistent volumes have a concept called Reclaim Policies. This policy determines what happens to the persistent volume storage resource when Persistent volume claims are deleted. There are multiple policies for that:
+* **Retain:** Reclaim manually. 
+* **Recycle:** Automatic reclamation via a simple data scrub. 
+* **Delete:** Only works for cloud storage resources. Underlying storage resource is deleted. 
+
+### Rook
+There is a tool called Rook which is a storage orchestrator tool that integrates with Kubernetes. Rook helps us to automate storage management with self-managing, self-scaling, self-healing storage services. It is a much more advanced way of dealing with storage in Kubernetes if there are complex storage needs. 
+
+### ConfigMaps and Secrets
+Another way of Kubernetes storage is ConfigMaps and Secrets. 
+* **ConfigMaps:** Store configuration data like configuration values, config files, secure credentials and pass it to the containers. 
+* **Secrets:** Used to store sensitive data like passwords or API keys. Secrets data is not encrypted by default. We need to encrypt it.
+
+
+
