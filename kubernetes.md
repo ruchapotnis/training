@@ -72,4 +72,4 @@ kubectl get pods
 * **Data Plane / Nodes**: The underlying worker machines that host pods and actively run container workloads.
 * **Control Plane**: The orchestration layer consisting of a collection of core components that manage node states, pod scheduling, and the overall cluster lifecycle.
 
-![Alt text](<Screenshot 2026-10-03 at 10.58.52 AM.png>)
+![Alt text](<kubernetes_architecture.png>)
