@@ -265,6 +265,7 @@ Say that our application is running on multiple pods. These pods have a sidecar.
 │ └───────────────┘       │        │ └───────────────┘       │
 └─────────────────────────┘        └─────────────────────────┘
 ```
+![Alt text](service_mesh.png)
 
 Purple squares are the sidecars/proxies. Communication occurs through them. Sidecar proxies add the additional functionality provided by service mesh.  
 
@@ -287,4 +288,7 @@ The service mesh has two main components:
 
 > **Key Concept:** A sidecar is basically another container running along with the main container inside the same pod.
 
-![Alt text](service_mesh.png)
+![Alt text](servicemesh_sidecar.png)
+
+There are various examples of service meshes: Linkerd, Consul connect, Traefik mesh, Istio, Kuma. 
+Service mesh interface (SMI) - SMI is that standard interface in Kubernetes. Helps to configure any SMI supporting service  mesh using custom Kubernetes resources via Kubernetes API. Basically it is a standard interface for service meshes built in Kubernetes and if we have a service mesh that supports SMI then we can configure that service mesh with Kubernetes objects. 
