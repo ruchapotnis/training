@@ -72,7 +72,7 @@ kubectl get pods
 * **Data Plane / Nodes**: The underlying worker machines that host pods and actively run container workloads.
 * **Control Plane**: The orchestration layer consisting of a collection of core components that manage node states, pod scheduling, and the overall cluster lifecycle.
 
-![Alt text](<kubernetes_architecture.png>)
+![Alt text](<./images/kubernetes_architecture.png>)
 
 
 * **API Server**: The center of the control plane. Other users and components use the API server to communicate and interact with the cluster.
@@ -134,7 +134,7 @@ Container Orchestration is the automation of the work required to run and manage
 ## 1. Container Runtime
 The **Container Runtime** is a piece of software responsible for running containers. It is **not** part of core Kubernetes and must be installed separately. 
 
-![Alt text](container_runtime.png)
+![Alt text](./images/container_runtime.png)
 
 * **Communication Mechanism:** The `kubelet` communicates directly with the container runtime.
 * **The CRI Standard:** To support multiple runtimes, Kubernetes uses the **Container Runtime Interface (CRI)**, a standard protocol that allows different runtime engines to plug into the cluster seamlessly.
@@ -242,7 +242,7 @@ An Ingress is a Kubernetes object that manages external access to applications w
 
 If a cluster is using multiple services, the request from the client should go to a particular service depending on the request. That decision depends on ingress. Ingress helps to select which service is getting taped to access the required application within a pod.
 
-![Alt text](ingress.png)
+![Alt text](./images/ingress.png)
 
 # Service Meshes
 
@@ -265,7 +265,7 @@ Say that our application is running on multiple pods. These pods have a sidecar.
 │ └───────────────┘       │        │ └───────────────┘       │
 └─────────────────────────┘        └─────────────────────────┘
 ```
-![Alt text](service_mesh.png)
+![Alt text](./images/service_mesh.png)
 
 Purple squares are the sidecars/proxies. Communication occurs through them. Sidecar proxies add the additional functionality provided by service mesh.  
 
@@ -288,7 +288,7 @@ The service mesh has two main components:
 
 > **Key Concept:** A sidecar is basically another container running along with the main container inside the same pod.
 
-![Alt text](servicemesh_sidecar.png)
+![Alt text](./images/servicemesh_sidecar.png)
 
 There are various examples of service meshes: Linkerd, Consul connect, Traefik mesh, Istio, Kuma. 
 Service mesh interface (SMI) - SMI is that standard interface in Kubernetes. Helps to configure any SMI supporting service  mesh using custom Kubernetes resources via Kubernetes API. Basically it is a standard interface for service meshes built in Kubernetes and if we have a service mesh that supports SMI then we can configure that service mesh with Kubernetes objects. 
@@ -308,7 +308,7 @@ It binds dynamically to Persistent volume and allows you to mount the storage re
 
 > **Summary:** Persistent volume in short defines the storage resource that is available and persistent volume claim defines what kind of storage resource do I need and ties that into a pod.
 
-![Alt text](persistent_volume.png)
+![Alt text](./images/persistent_volume.png)
 
 ### Reclaim Policies
 Persistent volumes have a concept called Reclaim Policies. This policy determines what happens to the persistent volume storage resource when Persistent volume claims are deleted. There are multiple policies for that:
@@ -451,7 +451,7 @@ Application delivery, also commonly known as **deployment**, is the process or t
 **Answer:** **Cloud-native architecture** is deliberately designed around the techniques and tools that directly address and meet the challenges of application delivery.
 
 
-![Alt text](cloudnative.png)
+![Alt text](./images/cloudnative.png)
 
 
 # GitOps
@@ -467,7 +467,7 @@ Automation further helps to implement what is in GIT.
 * There is a tool that watches these repos (that tool is a GitOps tool and there are multiple tools that carry this gitops function out). 
 * This tool automatically makes changes to our cluster by reading what changes have been made in the Git repo.
 
-![Alt text](gitops.png)
+![Alt text](./images/gitops.png)
 
 # CI/CD Fundamentals
 
