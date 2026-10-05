@@ -78,3 +78,33 @@ Databases store information across multiple separate tables. A connection can be
 - Customer ID in the first table (customer table) also happens to be the primary key. Primary key is the minimum number of columns you need to uniquely identify a record. It helps us to uniquely identify a row or a column (records). In the second table (order table), the unique identifier is the Order ID hence it is the primary key. 
 - Database diagram is also present. We can also create our own database diagram.
 
+![Alt text](./images/image3.png)
+
+
+- Database diagram shows the databases which are present along with their fields. The small yellow in each database is the primary key (unique identifier) in each database. 
+- In the order product table, there is no individual primary key. In that table to uniquely identify an item it is the Order ID and the cookie ID. 
+- For many different customers, there can be many orders. Hence outside the table there is an infinity sign indicating one to many relationships. Similarly, for each orders there are many order products. Lastly, for one product there can be many order products as well. 
+- We can also get an idea of the data type of each table. During querying, it becomes easier.
+
+
+# QUERY
+
+We want see all the list of customers. When we look at the customer database, there is one called ‘customerName’.
+
+![Alt text](./images/image4.png)
+
+1. **Start with SELECT:** The `SELECT` command allows us to retrieve data from a table. 
+2. **Specify the column:** Type `CustomerName` exactly as it is mentioned in the database schema.
+3. **Indicate the source:** Next, we need to mention where we want to get the customer name from—hence, type `FROM`. 
+4. **Name the table:** It is obtained from the `dbo.Customers` database, so type `dbo.Customers`.
+5. **Run the query:** Click on **Execute** to see your results.
+
+#### 💻 Complete Query Example
+```sql
+SELECT CustomerName 
+FROM dbo.Customers;
+```
+
+
+
+
