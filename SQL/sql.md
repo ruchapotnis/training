@@ -89,7 +89,7 @@ Databases store information across multiple separate tables. A connection can be
 
 # QUERY
 
-We want see all the list of customers. When we look at the customer database, there is one called ‘customerName’.
+1. We want see all the list of customers. When we look at the customer database, there is one called ‘customerName’.
 
 ![Alt text](./images/image4.png)
 
@@ -105,6 +105,22 @@ SELECT CustomerName
 FROM dbo.Customers;
 ```
 
+2. To include the specific notes associated with each customer in your current reporting or database query, update your existing selection block to append the `Notes` field. 
+
+### Implementation
+Keep the rest of your original query structure exactly the same, and modify your target fields list as shown below:
+
+
+![Alt text](./images/image5.png)
+
+```sql
+/* Update your SELECT statement by appending the notes column */
+SELECT CustomerID, CustomerName, ContactEmail, Notes
+FROM Customers;
+```
+
+* **Adjustment:** Just add `Notes` with a comma following your preceding field. 
+* **Consistency:** The remaining filters, joins, and sorting parameters of the query do not need to change.
 
 
 
