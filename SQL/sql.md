@@ -122,5 +122,67 @@ FROM Customers;
 * **Adjustment:** Just add `Notes` with a comma following your preceding field. 
 * **Consistency:** The remaining filters, joins, and sorting parameters of the query do not need to change.
 
+3. ## Working with Multiple Databases
+* **Simultaneous Connections:** SQL environments allow you to connect to and work with multiple databases at the same time.
+* **Context Selection:** The active database context is typically visible in the connection settings (e.g., a dropdown menu located at the top-left of the application interface showing a specific database like `KCC`).
+
+## Preventing Context Failures (The Master Database Issue)
+* **Execution Errors:** If your current session context is set to a system database like `master`, executing a query against local tables (e.g., `dbo.customers`) will fail. 
+* **Cause:** The table `dbo.customers` does not exist inside the system `master` schema.
+
+![Alt text](./images/image6.png)
+
+## Multi-Database Referencing Solution
+* **Explicit Naming:** You can query tables outside your active database context by using a fully qualified domain reference.
+* **Syntax Pattern:** Prepend the target database name directly before the schema and table name using standard dot notation.
+* **Implementation Example:** Change your standard table call to a fully qualified target reference:
+  ```sql
+  -- Standard query (fails if active context is not 'KCC')
+  SELECT * FROM dbo.customers;
+
+  -- Fully qualified query (succeeds regardless of active context)
+  SELECT * FROM KCC.dbo.customers;
+  ```
 
 
+4. ## The Formatting Challenge
+When querying columns from a relational database, column identifiers frequently use formatting variants like PascalCase (e.g., `CustomerName`) or underscores to maintain backend naming standards. However, these raw identifiers often lack user-friendly formatting when displayed directly on reporting dashboards or customer-facing outputs.
+
+![Alt text](./images/image7.png)
+
+## The Solution: Column Aliasing
+To insert a blank space or create a readable name for a column header, utilize the **`AS` keyword** followed by an identifier enclosed in square brackets (`[...]`). 
+
+### Key Syntax Rules
+* **The `AS` Keyword:** Appended immediately after the target database column name to indicate a temporary rename in the output.
+* **Square Brackets (`[]`):** Function as explicit delimiters in relational database dialects (such as SQL Server). They instruct the query engine to interpret any characters enclosed within them—including whitespace—as a single literal string identifier rather than system keywords or separate syntax commands.
+* **Flexibility:** Any custom title can be added inside the brackets to meet your specific structural presentation or business requirements.
+
+### Implementation Comparison
+
+| Before Aliasing | After Aliasing |
+| :--- | :--- |
+| Returns standard unspaced table header. | Returns structured column header with spaces. |
+| `SELECT CustomerName FROM dbo.customers;` | `SELECT CustomerName AS [Customer Name] FROM dbo.customers;` |
+
+
+5. # SQL: Obtaining Distinct and Unique Records
+
+## The Problem: Duplicate Rows in Query Results
+When querying tables with repeated data—such as a customer list where a company like **Tres Delicious** appears multiple times because it has different headquarters or branch offices—a standard `SELECT` statement returns every matching row. This leads to duplicate entries in your final result set.
+
+![Alt text](./images/image7.png)
+
+## The Solution: The `DISTINCT` Keyword
+To filter out duplicate rows and return only unique values, insert the **`DISTINCT`** keyword immediately after the `SELECT` command.
+
+### Syntax Implementation
+```sql
+SELECT DISTINCT CustomerName
+FROM KCC.dbo.customers;
+```
+
+### How It Works
+1. **Scans the Columns:** The database engine evaluates the combination of columns specified after the `DISTINCT` keyword.
+2. **Eliminates Redundancy:** If a value like *Tres Delicious* occurs more than once in the target column, the engine removes the duplicates from the output display.
+3. **Consolidated Output:** The final result list displays each unique customer name exactly **once**, regardless of how many times it exists inside the underlying database table.
