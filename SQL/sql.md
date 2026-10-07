@@ -171,7 +171,7 @@ To insert a blank space or create a readable name for a column header, utilize t
 ## The Problem: Duplicate Rows in Query Results
 When querying tables with repeated data—such as a customer list where a company like **Tres Delicious** appears multiple times because it has different headquarters or branch offices—a standard `SELECT` statement returns every matching row. This leads to duplicate entries in your final result set.
 
-![Alt text](./images/image7.png)
+![Alt text](./images/image8.png)
 
 ## The Solution: The `DISTINCT` Keyword
 To filter out duplicate rows and return only unique values, insert the **`DISTINCT`** keyword immediately after the `SELECT` command.
@@ -186,3 +186,5 @@ FROM KCC.dbo.customers;
 1. **Scans the Columns:** The database engine evaluates the combination of columns specified after the `DISTINCT` keyword.
 2. **Eliminates Redundancy:** If a value like *Tres Delicious* occurs more than once in the target column, the engine removes the duplicates from the output display.
 3. **Consolidated Output:** The final result list displays each unique customer name exactly **once**, regardless of how many times it exists inside the underlying database table.
+
+6. 
