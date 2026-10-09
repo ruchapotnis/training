@@ -302,3 +302,18 @@ WHERE customer_name NOT LIKE 'A%';
 **Key Details:**
 * **Result**: This query filters out the customers starting with **A** and returns all other customer records.
 * **The `NOT` Modifier**: Prepending `LIKE` with `NOT` instructs the system to look for a complete lack of a match against the `'A%'` pattern.
+
+
+## 14. Filtering with the `WHERE`
+
+To filter rows based on specific numeric ranges or boundaries, use the `WHERE` clause combined with comparison operators. For example, you can filter for records where the order total is greater than 1000.
+
+**Example Query:**
+```sql
+SELECT * FROM orders 
+WHERE order_total > 1000;
+```
+
+**Key Operators:**
+* **Comparison Operators**: You can use `>=` (greater than or equal to), `<=` (less than or equal to), `<` (less than), or `=` (equal to) to fine-tune your limits.
+* **The `BETWEEN` Operator**: To filter within an inclusive range, use `BETWEEN`. For example, `WHERE order_total BETWEEN 1000 AND 5000` catches all 
