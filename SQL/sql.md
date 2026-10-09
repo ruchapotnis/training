@@ -240,3 +240,18 @@ We can also filter the data with multiple states. For e.g. if we want two states
 
 ![Alt text](./images/image13.png)
 
+
+## 10. Using IN and NOT IN
+
+![Alt text](./images/image14.png)
+
+![Alt text](./images/image15.png)
+
+
+## 11. Using AND
+
+We can type a query where we specifically want a customer with a specific country. For that we type `AND`
+
+![Alt text](./images/image16.png)
+
+
