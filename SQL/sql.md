@@ -187,4 +187,133 @@ FROM KCC.dbo.customers;
 2. **Eliminates Redundancy:** If a value like *Tres Delicious* occurs more than once in the target column, the engine removes the duplicates from the output display.
 3. **Consolidated Output:** The final result list displays each unique customer name exactly **once**, regardless of how many times it exists inside the underlying database table.
 
-6. 
+6. ## 6. Retrieving All Columns in SQL
+
+To retrieve all columns and records from a specific table in a database, use the **`SELECT *`** statement. The asterisk (`*`) acts as a wildcard that tells the database engine to return every column available in that table.
+
+### Basic Syntax
+```sql
+SELECT * FROM table_name;
+```
+
+![Alt text](./images/image9.png)
+
+### How It Works
+
+* **`SELECT`**: The primary clause used to query data from a database.
+* **`*`**: The wildcard character specifying that **all columns** should be included in the results.
+* **`FROM table_name`**: Specifies the exact table where the data is located.
+
+## 7.  Retrieving Top 3 Columns in SQL
+
+### Basic Syntax
+```sql
+SELECT top(3) * FROM table_name;
+```
+
+![Alt text](./images/image10.png)
+
+
+## 8. Filtering with WHERE
+
+To retrieve the list of customers in the state of WA
+### Basic Syntax
+```sql
+SELECT * FROM table_name 
+where State = 'WA';
+```
+
+* Feel free to insert spaces to make it look cleaner and better.
+* Entering comments also help with the help of **`--`** or **`/*`**
+
+![Alt text](./images/image11.png)
+
+In the above example, we filtered data equal to `WA` state. 
+We can also filter data `not equal` to WA state using `!=` or `<>`
+
+![Alt text](./images/image12.png)
+
+
+## 9. Using OR statement
+
+We can also filter the data with multiple states. For e.g. if we want two states, we use `OR`
+
+![Alt text](./images/image13.png)
+
+
+## 10. Using IN and NOT IN
+
+![Alt text](./images/image14.png)
+
+![Alt text](./images/image15.png)
+
+
+## 11. Using AND
+
+We can type a query where we specifically want a customer with a specific country. For that we type `AND`
+
+![Alt text](./images/image16.png)
+
+
+## 12. Combining AND with OR Operators
+
+To search for a customer in a specific country who matches one of multiple criteria, combine `AND` with `OR` using parentheses `()`.
+
+**Syntax Example:**
+```text
+Country = 'USA' AND (Status = 'Active' OR Lifetime_Value > 1000)
+```
+
+**How it works:**
+* The system first evaluates the conditions inside the **parentheses** (`Status` or `Lifetime_Value`).
+* It then ensures the customer *must* also match the **Country** requirement.
+
+
+![Alt text](./images/image17.png)
+
+
+## 13. Filtering with the `LIKE` Operator
+
+To find customers whose names begin with the letter **A**, use the `LIKE` operator combined with the `%` wildcard. The `%` sign implies that there can be any character (or no characters) after the letter **A**, as long as the value begins with **A**.
+
+![Alt text](./images/image18.png)
+
+**Example Query:**
+```sql
+SELECT * FROM table_name 
+WHERE customer_name LIKE 'A%';
+```
+
+**Key Details:**
+* **Result**: This query returns the **two customers** whose names begin with the letter **A**.
+* **The `%` Wildcard**: Ensures that only the starting letter is restricted to **A**, allowing any sequence of letters to follow it.
+
+
+![Alt text](./images/image19.png)
+
+To find customers whose names do **not** start with the letter **A**, use the `NOT LIKE` operator. This explicitly reverses the filter and excludes any matching patterns.
+
+**Example Query:**
+```sql
+SELECT * FROM table_name
+WHERE customer_name NOT LIKE 'A%';
+```
+
+**Key Details:**
+* **Result**: This query filters out the customers starting with **A** and returns all other customer records.
+* **The `NOT` Modifier**: Prepending `LIKE` with `NOT` instructs the system to look for a complete lack of a match against the `'A%'` pattern.
+
+
+## 14. Filtering with the `WHERE`
+
+To filter rows based on specific numeric ranges or boundaries, use the `WHERE` clause combined with comparison operators. For example, you can filter for records where the order total is greater than 1000.
+
+**Example Query:**
+```sql
+SELECT * FROM orders 
+WHERE order_total > 1000;
+```
+
+**Key Operators:**
+* **Comparison Operators**: You can use `>=` (greater than or equal to), `<=` (less than or equal to), `<` (less than), or `=` (equal to) to fine-tune your limits.
+* **The `BETWEEN` Operator**: To filter within an inclusive range, use `BETWEEN`. For example, `WHERE order_total BETWEEN 1000 AND 5000` catches all 
