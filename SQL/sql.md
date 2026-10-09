@@ -187,4 +187,42 @@ FROM KCC.dbo.customers;
 2. **Eliminates Redundancy:** If a value like *Tres Delicious* occurs more than once in the target column, the engine removes the duplicates from the output display.
 3. **Consolidated Output:** The final result list displays each unique customer name exactly **once**, regardless of how many times it exists inside the underlying database table.
 
-6. 
+6. ## 6. Retrieving All Columns in SQL
+
+To retrieve all columns and records from a specific table in a database, use the **`SELECT *`** statement. The asterisk (`*`) acts as a wildcard that tells the database engine to return every column available in that table.
+
+### Basic Syntax
+```sql
+SELECT * FROM table_name;
+```
+
+![Alt text](./images/image9.png)
+
+### How It Works
+
+* **`SELECT`**: The primary clause used to query data from a database.
+* **`*`**: The wildcard character specifying that **all columns** should be included in the results.
+* **`FROM table_name`**: Specifies the exact table where the data is located.
+
+## 7.  Retrieving Top 3 Columns in SQL
+
+### Basic Syntax
+```sql
+SELECT top(3) * FROM table_name;
+```
+
+![Alt text](./images/image10.png)
+
+
+## 8. Filtering with WHERE
+
+To retrieve the list of customers in the state of WA
+### Basic Syntax
+```sql
+SELECT * FROM table_name 
+where State = 'WA';
+```
+
+* Feel free to insert spaces to make it look cleaner and better.
+* Entering comments also help with the help of **`--`** or **`/*`**
+
