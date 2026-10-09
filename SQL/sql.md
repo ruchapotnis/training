@@ -227,3 +227,16 @@ where State = 'WA';
 * Entering comments also help with the help of **`--`** or **`/*`**
 
 ![Alt text](./images/image11.png)
+
+In the above example, we filtered data equal to `WA` state. 
+We can also filter data `not equal` to WA state using `!=` or `<>`
+
+![Alt text](./images/image12.png)
+
+
+## 9. Using OR statement
+
+We can also filter the data with multiple states. For e.g. if we want two states, we use `OR`
+
+![Alt text](./images/image13.png)
+
