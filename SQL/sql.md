@@ -255,3 +255,50 @@ We can type a query where we specifically want a customer with a specific countr
 ![Alt text](./images/image16.png)
 
 
+## 12. Combining AND with OR Operators
+
+To search for a customer in a specific country who matches one of multiple criteria, combine `AND` with `OR` using parentheses `()`.
+
+**Syntax Example:**
+```text
+Country = 'USA' AND (Status = 'Active' OR Lifetime_Value > 1000)
+```
+
+**How it works:**
+* The system first evaluates the conditions inside the **parentheses** (`Status` or `Lifetime_Value`).
+* It then ensures the customer *must* also match the **Country** requirement.
+
+
+![Alt text](./images/image17.png)
+
+
+## 13. Filtering with the `LIKE` Operator
+
+To find customers whose names begin with the letter **A**, use the `LIKE` operator combined with the `%` wildcard. The `%` sign implies that there can be any character (or no characters) after the letter **A**, as long as the value begins with **A**.
+
+![Alt text](./images/image18.png)
+
+**Example Query:**
+```sql
+SELECT * FROM table_name 
+WHERE customer_name LIKE 'A%';
+```
+
+**Key Details:**
+* **Result**: This query returns the **two customers** whose names begin with the letter **A**.
+* **The `%` Wildcard**: Ensures that only the starting letter is restricted to **A**, allowing any sequence of letters to follow it.
+
+
+![Alt text](./images/image19.png)
+
+To find customers whose names do **not** start with the letter **A**, use the `NOT LIKE` operator. This explicitly reverses the filter and excludes any matching patterns.
+
+**Example Query:**
+```sql
+SELECT * FROM table_name
+WHERE customer_name NOT LIKE 'A%';
+```
+
+**Key Details:**
+* **Result**: This query filters out the customers starting with **A** and returns all other customer records.
+* **The `NOT` Modifier**: Prepending `LIKE` with `NOT` instructs the system to look for a complete lack of a match against the `'A%'` pattern.
