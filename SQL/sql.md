@@ -308,6 +308,8 @@ WHERE customer_name NOT LIKE 'A%';
 
 To filter rows based on specific numeric ranges or boundaries, use the `WHERE` clause combined with comparison operators. For example, you can filter for records where the order total is greater than 1000.
 
+![Alt text](./images/image20.png)
+
 **Example Query:**
 ```sql
 SELECT * FROM orders 
@@ -317,3 +319,43 @@ WHERE order_total > 1000;
 **Key Operators:**
 * **Comparison Operators**: You can use `>=` (greater than or equal to), `<=` (less than or equal to), `<` (less than), or `=` (equal to) to fine-tune your limits.
 * **The `BETWEEN` Operator**: To filter within an inclusive range, use `BETWEEN`. For example, `WHERE order_total BETWEEN 1000 AND 5000` catches all 
+
+
+![Alt text](./images/image21.png)
+
+# Joining Two Tables
+
+This will be inclusive of 1000 and 2000.
+
+It is very important to join two tables. In the above queries, we were just pulling information from one table. Now we are going to pull information from two tables and get results as one spreadsheet in the results section. 
+
+
+![Alt text](./images/image22.png)
+
+
+## The Tables
+There are two tables now: 
+* **Customers**
+* **Orders**
+
+### Desired Fields
+* **From the Orders table:** `OrderID`, `OrderDate`, and `OrderTotal`
+* **From the Customers table:** `CustomerName` and `Phone number`
+
+## How it Works
+The two tables (Order Table and Customer Table) are connected to each other with the help of a **`JOIN`**. 
+
+Next, you also need to specify how you are going to join the tables. Once you take a look at the two tables, both of them have a **Customer ID** in common. So, both tables can be joined together with the help of **Customer ID**.
+
+
+### Using Table Aliases
+
+We can also use **aliases**. For example:
+* For `dbo.orders`, we can refer to it as **`o`**
+* For `dbo.customers`, we can use an alias as **`c`**
+
+This is more for our **convenience** and for making the code look **cleaner**. There is nothing else in particular to it.
+
+![Alt text](./images/image23.png)
+
+
