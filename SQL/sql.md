@@ -359,3 +359,116 @@ This is more for our **convenience** and for making the code look **cleaner**. T
 ![Alt text](./images/image23.png)
 
 
+This gives us the exact same result, but the code looks cleaner.
+
+## Understanding JOIN Types
+
+### Inner Join
+The `JOIN` written here is an **`INNER JOIN`**. 
+* We can explicitly type `INNER JOIN` instead of just `JOIN`. 
+* Whenever you type `JOIN` by itself, SQL defaults to an **`INNER JOIN`**.  
+
+An `INNER JOIN` gives us all the customers who have an order, and all the orders that have customers associated with them. If a customer does not have any order, they **will not** show up in an inner join list.
+
+### Right Outer Join
+If you want to see a customer who **does not have any orders**, you use a **`RIGHT OUTER JOIN`**. This ensures all records from the right table are included, even if they don't have a matching order.
+
+![Alt text](./images/image24.png)
+
+
+### Right Outer Join
+A **`RIGHT OUTER JOIN`** means that we need to see all the customers irrespective of whether they have orders or not. 
+
+Since `dbo.customers` is present on the right side of the query, we do a right outer join. As a result, the order value in the last row will show as **`NULL`**, but the customer name will still be given.
+
+### Left Outer Join
+Similarly, if we want to check all orders irrespective of whether a customer name is present or not, we do a **`LEFT OUTER JOIN`**.
+
+
+![Alt text](./images/image25.png)
+
+
+The above data has all the names of the customers in regards to the order details, which is why we cannot see any **`NULL`** values.
+
+## Adding Customer ID and Resolving Ambiguity
+
+Next in the query, I also want to add **`CustomerID`**. 
+
+If we simply type `CustomerID` after `CustomerName` and execute the query, it will give us an **invalid result** (or an ambiguous column error). 
+
+This happens because `CustomerID` exists in **both** tables. SQL does not know whether to pull it from the `Customers` table or the `Orders` table. To fix this, you must specify the table name or its alias before the column name (e.g., `c.CustomerID` or `o.CustomerID`).
+
+
+![Alt text](./images/image26.png)
+
+
+### Resolving Column Ambiguity
+
+The reason for the error is that **`CustomerID`** is present in both tables. The query becomes confused about which table it should pull the ID from. 
+
+Hence, we need to explicitly tell the query which of the two tables to use:
+* Here, we are going to pull the customer ID from the **Customers** table.
+* The alias we mentioned for this table is **`c`**. 
+
+Therefore, we type **`c.CustomerID`**. This resolves the confusion, gives us the correct result, and pulls the data directly from the customer database represented by `c`.
+
+
+![Alt text](./images/image27.png)
+
+## Sorting Results with ORDER BY
+
+Next, if we want our data to be presented in a specific sequence or order, we use the **`ORDER BY`** clause. 
+
+In this specific example, we want to sort our results by **`OrderTotal`**. 
+
+
+![Alt text](./images/image28.png)
+
+
+### Sorting Direction (Ascending vs. Descending)
+
+By default, this gives us the **`OrderTotal`** sorted in **ascending order** (lowest to highest). 
+
+If you want the results in **descending order** (highest to lowest), you just type **`DESC`** after the column name.
+
+
+![Alt text](./images/image29.png)
+
+
+## Filtering by Date: Orders from the Past Month
+
+We need to get all the orders from the past month where the order date is exactly one month in the past. 
+
+To achieve this, we need to filter the database to retrieve all orders where the order date occurs **after** that specific date.
+
+
+![Alt text](./images/image30.png)
+
+
+### Automating Date Filters with DATEADD
+
+Now we need to see the orders for the past month on an ongoing basis. Because we need to keep on repeating this query, we cannot just go in and manually change the dates every time. 
+
+To solve this, we use a command called **`DATEADD`** which dynamically calculates the date. 
+
+Inside the function:
+* **`month`** represents the unit of time we want to change.
+* **`-1`** subtracts one month to pull all the orders from the past month.
+* **`GETDATE()`** represents the function that pulls the current date and time.
+
+
+![Alt text](./images/image31.png)
+
+
+This gives us the exact same results, except now with this function, when we run the same query next week, we will get all the orders of the past month relative to that day. There is absolutely no need to update the date manually.
+
+## Aggregating Data with COUNT
+
+If you want to calculate the total number of orders from the past month rather than listing them individually, you can just add the **`COUNT()`** function to your query.
+
+
+![Alt text](./images/image32.png)
+
+
+
+
