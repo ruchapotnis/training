@@ -470,5 +470,26 @@ If you want to calculate the total number of orders from the past month rather t
 ![Alt text](./images/image32.png)
 
 
+This gives us the total number of orders in the past month, automatically calculating the timeframe based on the exact day you run the query.
+
+## Totaling Revenue with SUM
+
+Similarly, if you want to calculate the total revenue instead of the number of orders, you can sum up the order totals of the past month by typing **`SUM(OrderTotal)`**.
+
+
+![Alt text](./images/image33.png)
+
+
+## Grouping Results with GROUP BY
+
+We can also group all the orders with the help of **`GROUP BY`**. 
+
+This means if *CustomerA* has 4 different orders in a single month, applying `GROUP BY` with the **Customer ID** allows us to aggregate those records and calculate the exact total revenue obtained from that specific customer.
+
+
+![Alt text](./images/image34.png)
+
+
+
 
 
