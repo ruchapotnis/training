@@ -7,30 +7,21 @@ title: Knowledge Base
 <p>Select a folder below to jump directly into its documentation:</p>
 <hr>
 
+<!-- Bulletproof Direct-Path Folder Links -->
 <ul style="list-style-type: none; padding: 0;">
-  {% assign processed_folders = "" %}
-  
-  {% comment %}
-    Loop through our new training collection
-  {% endcomment %}
-  {% for doc in site.training %}
-    {% assign path_parts = doc.path | split: '/' %}
-    
-    {% comment %}
-      The folder name will be the first item inside the _training directory 
-      (e.g., path_parts[1] is 'SQL' or 'AWS')
-    {% endcomment %}
-    {% assign folder_name = path_parts[1] %}
-    
-    {% unless processed_folders contains folder_name or folder_name == nil or folder_name == "" %}
-      <li style="margin: 15px 0; font-size: 18px;">
-        <!-- Links directly to the compiled HTML page of that document -->
-        <a href="{{ doc.url | relative_url }}" style="color: #2980b9; text-decoration: none; font-weight: bold; display: flex; align-items: center;">
-          <span style="margin-right: 10px; font-size: 22px;">📁</span> {{ folder_name | upcase }}
-        </a>
-      </li>
-      
-      {% assign processed_folders = processed_folders | append: folder_name | append: "," %}
-    {% endunless %}
-  {% endfor %}
+
+  <!-- Folder 1: AWS -->
+  <li style="margin: 20px 0; font-size: 18px;">
+    <a href="{{ '/training/AWS/aws.html' | relative_url }}" style="color: #2980b9; text-decoration: none; font-weight: bold; display: flex; align-items: center;">
+      <span style="margin-right: 10px; font-size: 22px;">📁</span> AWS TRAINING
+    </a>
+  </li>
+
+  <!-- Folder 2: SQL -->
+  <li style="margin: 20px 0; font-size: 18px;">
+    <a href="{{ '/training/SQL/SQL.html' | relative_url }}" style="color: #2980b9; text-decoration: none; font-weight: bold; display: flex; align-items: center;">
+      <span style="margin-right: 10px; font-size: 22px;">📁</span> SQL TRAINING
+    </a>
+  </li>
+
 </ul>

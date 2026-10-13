@@ -1,3 +1,9 @@
+---
+layout: default
+title: AWS Training
+---
+
+
 # Why SQL?
 
 Businesses keep track of their data in databases. **SQL analyses data from this database and generates valuable insights** by us writing a query. 
