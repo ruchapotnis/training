@@ -1,3 +1,8 @@
+---
+layout: default
+title: AWS training notes
+---
+
 ## What is an EC2 Instance?
 An **EC2 (Elastic Compute Cloud) Instance** is a virtual server in the cloud that provides resizable compute capacity.
 
