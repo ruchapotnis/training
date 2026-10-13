@@ -1,6 +1,6 @@
 ---
 layout: default
-title: AWS Training
+title: SQL Training
 ---
 
 
