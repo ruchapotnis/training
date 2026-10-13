@@ -15,4 +15,4 @@ DevOps and platform engineer with 3+ years of experience architecting resilient,
 *   **Tools:** Git, VS Code, Docker
 
 ## 📬 Contact Me
-You can reach me via email at `ruchapotnis99@gmail.com` or find me on [LinkedIn](https://www.linkedin.com/in/ruchapotnis/?isSelfProfile=true).
+You can reach me via email at `ruchapotnis99@gmail.com` or find me on [LinkedIn]().
