@@ -9,30 +9,40 @@ title: Knowledge Base
 
 <ul style="list-style-type: none; padding: 0;">
   {% comment %}
-    1. Scan site pages to identify distinct subfolders under the training directory
+    1. Scan every single page in the site
   {% endcomment %}
-  {% assign folder_list = "" %}
+  {% assign processed_folders = "" %}
+  
   {% for pg in site.pages %}
+    {% comment %}
+      2. If the page path starts with training/, find its parent folder
+    {% endcomment %}
     {% if pg.path contains 'training/' %}
       {% assign path_parts = pg.path | split: '/' %}
-      {% assign sub_folder = path_parts[1] %}
-      {% assign folder_list = folder_list | append: sub_folder | append: "," %}
-    {% endif %}
-  {% endfor %}
-  
-  {% assign unique_folders = folder_list | split: "," | uniq %}
-
-  {% comment %}
-    2. Display each unique folder as a direct link straight to its markdown document
-  {% endcomment %}
-  {% for folder in unique_folders %}
-    {% if folder != "" and folder != nil %}
-      {% assign target_url = '/training/' | append: folder | append: '/' | append: folder | append: '.html' | relative_url %}
-      <li style="margin: 15px 0; font-size: 18px;">
-        <a href="{{ target_url }}" style="color: #2980b9; text-decoration: none; font-weight: bold; display: flex; align-items: center;">
-          <span style="margin-right: 10px;">📁</span> {{ folder | replace: '_', ' ' | replace: '-', ' ' | upcase }}
-        </a>
-      </li>
+      
+      {% comment %}
+        The folder name sits right after 'training'. 
+        path_parts[0] is 'training', path_parts[1] is the folder name.
+      {% endcomment %}
+      {% assign folder_name = path_parts[1] %}
+      
+      {% comment %}
+        3. Make sure we haven't printed this folder yet, and skip the raw image directories
+      {% endcomment %}
+      {% unless processed_folders contains folder_name or folder_name == "images" or folder_name == nil or folder_name == "" %}
+        
+        <!-- Generate link directly to the page you just edited -->
+        {% assign target_url = pg.url | relative_url %}
+        
+        <li style="margin: 15px 0; font-size: 18px;">
+          <a href="{{ target_url }}" style="color: #2980b9; text-decoration: none; font-weight: bold; display: flex; align-items: center;">
+            <span style="margin-right: 10px; font-size: 22px;">📁</span> {{ folder_name | upcase }}
+          </a>
+        </li>
+        
+        {% comment %} 4. Mark this folder as processed so it doesn't duplicate {% endcomment %}
+        {% assign processed_folders = processed_folders | append: folder_name | append: "," %}
+      {% endunless %}
     {% endif %}
   {% endfor %}
 </ul>
