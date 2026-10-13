@@ -1,6 +1,7 @@
 title: Tech Training Base
-theme: jekyll-theme-cayman # Or your preferred theme
+theme: jekyll-theme-cayman
 
-# Force Jekyll to build everything inside your custom training directory
-include:
-  - training
+collections:
+  training:
+    output: true
+    permalink: /training/:path/

@@ -8,41 +8,29 @@ title: Knowledge Base
 <hr>
 
 <ul style="list-style-type: none; padding: 0;">
-  {% comment %}
-    1. Scan every single page in the site
-  {% endcomment %}
   {% assign processed_folders = "" %}
   
-  {% for pg in site.pages %}
+  {% comment %}
+    Loop through our new training collection
+  {% endcomment %}
+  {% for doc in site.training %}
+    {% assign path_parts = doc.path | split: '/' %}
+    
     {% comment %}
-      2. If the page path starts with training/, find its parent folder
+      The folder name will be the first item inside the _training directory 
+      (e.g., path_parts[1] is 'SQL' or 'AWS')
     {% endcomment %}
-    {% if pg.path contains 'training/' %}
-      {% assign path_parts = pg.path | split: '/' %}
+    {% assign folder_name = path_parts[1] %}
+    
+    {% unless processed_folders contains folder_name or folder_name == nil or folder_name == "" %}
+      <li style="margin: 15px 0; font-size: 18px;">
+        <!-- Links directly to the compiled HTML page of that document -->
+        <a href="{{ doc.url | relative_url }}" style="color: #2980b9; text-decoration: none; font-weight: bold; display: flex; align-items: center;">
+          <span style="margin-right: 10px; font-size: 22px;">📁</span> {{ folder_name | upcase }}
+        </a>
+      </li>
       
-      {% comment %}
-        The folder name sits right after 'training'. 
-        path_parts[0] is 'training', path_parts[1] is the folder name.
-      {% endcomment %}
-      {% assign folder_name = path_parts[1] %}
-      
-      {% comment %}
-        3. Make sure we haven't printed this folder yet, and skip the raw image directories
-      {% endcomment %}
-      {% unless processed_folders contains folder_name or folder_name == "images" or folder_name == nil or folder_name == "" %}
-        
-        <!-- Generate link directly to the page you just edited -->
-        {% assign target_url = pg.url | relative_url %}
-        
-        <li style="margin: 15px 0; font-size: 18px;">
-          <a href="{{ target_url }}" style="color: #2980b9; text-decoration: none; font-weight: bold; display: flex; align-items: center;">
-            <span style="margin-right: 10px; font-size: 22px;">📁</span> {{ folder_name | upcase }}
-          </a>
-        </li>
-        
-        {% comment %} 4. Mark this folder as processed so it doesn't duplicate {% endcomment %}
-        {% assign processed_folders = processed_folders | append: folder_name | append: "," %}
-      {% endunless %}
-    {% endif %}
+      {% assign processed_folders = processed_folders | append: folder_name | append: "," %}
+    {% endunless %}
   {% endfor %}
 </ul>

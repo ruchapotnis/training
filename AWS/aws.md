@@ -1,7 +1,7 @@
 ---
 layout: default
-title: AWS training notes
---- 
+title: AWS Training
+---
 
 ## What is an EC2 Instance?
 An **EC2 (Elastic Compute Cloud) Instance** is a virtual server in the cloud that provides resizable compute capacity.
@@ -262,7 +262,7 @@ This is exactly how EFS works for infrastructure: it acts as a centralized, shar
 
 ---
 
-## Auto-Scaling and Elastic Load Balancing
+## Auto-Scaling and Elastic Load Balancing :
 
 ### Infrastructure Foundations
 * **EBS Snapshots:** Act as localized point-in-time backups of specific block storage volumes (similar to saving data on a flash drive).
