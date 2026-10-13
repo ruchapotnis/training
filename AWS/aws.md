@@ -1,7 +1,7 @@
 ---
 layout: default
 title: AWS training notes
----
+--- 
 
 ## What is an EC2 Instance?
 An **EC2 (Elastic Compute Cloud) Instance** is a virtual server in the cloud that provides resizable compute capacity.
@@ -338,3 +338,11 @@ Amazon Redshift manages massive datasets using a specialized multi-node cluster 
 * **Definition:** A fully managed web service designed to simplify the provisioning, operation, scaling, and maintenance of relational databases within the AWS Cloud environment.
 * **Managed Overhead:** Automatically handles common, time-consuming database administration tasks including software patching, automatic point-in-time backups, storage scaling, and hardware failure recovery.
 * **Engines Supported:** Provides cost-efficient, resizable performance capacity utilizing standard industry engines such as MySQL, PostgreSQL, MariaDB, Oracle, and Microsoft SQL Server.
+
+
+
+
+
+
+
+
