@@ -1,3 +1,8 @@
+---
+layout: default
+title: Release-deployment Training
+---
+
 
 ![Alt text](./images/release-process.png)
 

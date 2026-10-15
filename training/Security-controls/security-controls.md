@@ -1,3 +1,9 @@
+---
+layout: default
+title: Security Controls Training
+---
+
+
 # Cloud Security Controls
 
 This document outlines the active **200 security controls** enforced across our multi-cloud infrastructure scanning engine, broken down by provider and resource type.
