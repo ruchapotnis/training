@@ -1,3 +1,9 @@
+---
+layout: default
+title: Linux Training
+---
+
+
 # Basic Linux Commands
 
 | Command | Description |

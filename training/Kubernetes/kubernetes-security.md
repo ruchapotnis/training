@@ -1,3 +1,8 @@
+---
+layout: default
+title: Kubernetes Security Training
+---
+
 # Kubernetes Security & Workload Isolation Playbook
 
 ## 1. How would you isolate workloads in a Kubernetes environment?

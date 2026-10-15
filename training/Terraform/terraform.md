@@ -1,3 +1,8 @@
+---
+layout: default
+title: Terraform Training
+---
+
 ## Introduction
 
 **Terraform** is Infrastructure as a Code (IaC). **Infrastructure** means resources required to maintain an application. This means whatever infrastructure the application has is obtained to us through code (terraform). 

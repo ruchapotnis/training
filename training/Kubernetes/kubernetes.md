@@ -1,3 +1,8 @@
+---
+layout: default
+title: Kubernetes Training
+---
+
 # Introduction
 
 **Cloud-Native** is everything that is built on the cloud. A cloud-native application means the application is fully deployed on the cloud.
